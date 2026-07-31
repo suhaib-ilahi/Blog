@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {Provider} from 'react-redux'
+import './App.css'
 import App from './App.jsx'
 import {store} from './store/store.js'
 import { createBrowserRouter ,RouterProvider} from 'react-router-dom'
@@ -13,8 +14,9 @@ import {AllPost} from './pages/index.js'
 import {EditPost} from './pages/index.js'
 import {Post} from './pages/index.js'
 
-const router = createBrowserRouter([
-  {
+const router = createBrowserRouter(
+[
+{
     path: "/",
     element: <App />,
     children: [
@@ -71,14 +73,16 @@ const router = createBrowserRouter([
         },
     ],
 },
-])
+],
+{
+   basename: "/Blog",
+},
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider  router={router}>
-    <App />
-    </RouterProvider>
+      <RouterProvider  router={router} />
     </Provider>
   </StrictMode>,
 )
